@@ -94,7 +94,7 @@ export default class Home extends Component {
       <main className="container-home">
         <header className="color-header">
           <nav className="navbar navbar-light">
-            <div className="form-inline">
+            <div className="form-inline search-bar">
               <input
                 className="form-control mr-sm-1"
                 type="text"
@@ -111,11 +111,16 @@ export default class Home extends Component {
               >
                 Pesquisar
               </button>
-              <Link to="/ShopCart" data-testid="shopping-cart-button">
-                Carrinho de compras
-              </Link>
             </div>
-            <Count itensCartQT={ itensCartQT } />
+              <Link
+                to="/ShopCart"
+                data-testid="shopping-cart-button"
+                className="btn btn-primary stretched-link btn-size"
+              >
+                  <Count itensCartQT={ itensCartQT }   />
+                  <i className="icon-size bi bi-cart">
+                  </i>
+              </Link>
           </nav>
         </header>
         <div className="d-flex color-products">
