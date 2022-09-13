@@ -14,10 +14,16 @@ export default class ListProdutos extends Component {
               listProdutos.map((e) => (
                 <div className="col" data-testid="product" key={ e.id }>
                   <div className="card card-width card-height">
-                    <div className='btn-size-frete'>
+                    <div className="btn-size-frete">
                       {
                         e.shipping.free_shipping
-                          ? <i class="bi bi-truck" data-testid="free-shipping">Frete gratis</i> : null
+                        &&
+                          <i
+                            className="bi bi-truck"
+                            data-testid="free-shipping"
+                          >
+                            Frete gratis
+                          </i>
                       }
                     </div>
                     <img className="card-img-top" src={ e.thumbnail } alt={ e.title } />

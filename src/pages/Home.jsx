@@ -112,15 +112,14 @@ export default class Home extends Component {
                 Pesquisar
               </button>
             </div>
-              <Link
-                to="/ShopCart"
-                data-testid="shopping-cart-button"
-                className="btn btn-primary stretched-link btn-size"
-              >
-                  <Count itensCartQT={ itensCartQT }   />
-                  <i className="icon-size bi bi-cart">
-                  </i>
-              </Link>
+            <Link
+              to="/ShopCart"
+              data-testid="shopping-cart-button"
+              className="btn btn-primary stretched-link btn-size"
+            >
+              <Count itensCartQT={ itensCartQT } />
+              <i className="icon-size bi bi-cart" />
+            </Link>
           </nav>
         </header>
         <div className="d-flex color-products">
