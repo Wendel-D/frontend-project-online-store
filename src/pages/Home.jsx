@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Count from '../components/Count';
+import ListProdutos from '../components/ListProdutos';
 import { getCategories, getProductsFromCategoryAndQuery,
   setLocalItems } from '../services/api';
 
@@ -90,99 +91,75 @@ export default class Home extends Component {
     const { categoriesList,
       textBusca, listProdutos, pesquisou, itensCartQT } = this.state;
     return (
-      <main>
-        <div className="campoDeBusca">
-          <input
-            type="text"
-            name="textBusca"
-            value={ textBusca }
-            onChange={ this.handleChange }
-            data-testid="query-input"
-          />
-          <button
-            type="button"
-            data-testid="query-button"
-            onClick={ this.handleClick }
-          >
-            Pesquisar
-          </button>
-          <Count itensCartQT={ itensCartQT } />
-        </div>
-        <div>
-          {
-            listProdutos.length === 0 && (
-              <h1
-                data-testid="home-initial-message"
+      <main className="container-home">
+        <header className="color-header">
+          <nav className="navbar navbar-light">
+            <div className="form-inline">
+              <input
+                className="form-control mr-sm-1"
+                type="text"
+                name="textBusca"
+                value={ textBusca }
+                onChange={ this.handleChange }
+                data-testid="query-input"
+              />
+              <button
+                className="btn btn-outline-success my-2 my-sm-0"
+                type="button"
+                data-testid="query-button"
+                onClick={ this.handleClick }
               >
-                Digite algum termo de pesquisa ou escolha uma categoria.
-
-              </h1>)
-          }
-        </div>
-        <div>
-          {
-            pesquisou && listProdutos.length === 0
-              ? <p>Nenhum produto foi encontrado</p>
-              : (
-                listProdutos.map((e) => (
-                  <div data-testid="product" key={ e.id }>
-                    <div>
-                      {
-                        e.shipping.free_shipping
-                        && <p data-testid="free-shipping">Frete grátis</p>
-                      }
-                      <img src={ e.thumbnail } alt={ e.title } />
-                      <p>{e.title}</p>
-                      <p>{`Valor: ${e.price}`}</p>
-                      <Link
-                        data-testid="product-detail-link"
-                        to={ `/productdetails/${e.id}` }
-                      >
-                        Detalhes
-
-                      </Link>
-
-                    </div>
-
-                    <div>
-                      <button
-                        name={ e.id }
-                        type="button"
-                        data-testid="product-add-to-cart"
-                        onClick={ () => this.handleCart(e.id) }
-                      >
-                        Adicionar ao Carrinho!
-                      </button>
-                    </div>
-                  </div>
+                Pesquisar
+              </button>
+              <Link to="/ShopCart" data-testid="shopping-cart-button">
+                Carrinho de compras
+              </Link>
+            </div>
+            <Count itensCartQT={ itensCartQT } />
+          </nav>
+        </header>
+        <div className="d-flex color-products">
+          <div
+            className="sidebar d-flex
+        flex-column flex-shrink-0 p-3 text-white color-header"
+          >
+            <ul className="nav nav-pills flex-column mb-auto">
+              {
+                categoriesList.map((elem) => (
+                  <li key={ elem.id }>
+                    <button
+                      className="btn-width btn btn-outline-dark"
+                      data-testid="category"
+                      type="button"
+                      name={ elem.id }
+                      onClick={ this.categoryClick }
+                    >
+                      { elem.name }
+                    </button>
+                  </li>
                 ))
-              )
-          }
-        </div>
-        <div>
-          <p>
-            <Link to="/ShopCart" data-testid="shopping-cart-button">
-              Carrinho de compras
-            </Link>
-          </p>
-        </div>
+              }
+            </ul>
+          </div>
+          <div className="d-flex align-content-stretch flex-wrap">
+            <div className="teste">
+              {
+                listProdutos.length === 0 && (
+                  <h3
+                    data-testid="home-initial-message"
+                  >
+                    Digite algum termo de pesquisa ou escolha uma categoria.
 
-        <ul>
-          {
-            categoriesList.map((elem) => (
-              <div key={ elem.id }>
-                <button
-                  data-testid="category"
-                  type="button"
-                  name={ elem.id }
-                  onClick={ this.categoryClick }
-                >
-                  { elem.name }
-                </button>
-              </div>
-            ))
-          }
-        </ul>
+                  </h3>)
+              }
+            </div>
+            <ListProdutos
+              pesquisou={ pesquisou }
+              listProdutos={ listProdutos }
+              handleCart={ this.handleCart }
+            />
+          </div>
+        </div>
       </main>
     );
   }

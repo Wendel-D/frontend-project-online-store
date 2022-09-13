@@ -32,7 +32,6 @@ export default class ShopCart extends Component {
       const quantidadeEstoque = objP.available_quantity - 1;
       objP.available_quantity = quantidadeEstoque;
       if (quantidadeEstoque > 0) {
-        console.log(objP.available_quantity);
         objP.quantidade += 1;
         const existente = carrinho.findIndex((e) => e.id === objP.id);
         carrinho.splice(existente, 1);
