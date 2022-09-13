@@ -16,14 +16,14 @@ export default class ListProdutos extends Component {
                   <div className="card card-width card-height">
                     <div className="btn-size-frete">
                       {
-                        e.shipping.free_shipping
-                        &&
+                        e.shipping.free_shipping && (
                           <i
                             className="bi bi-truck"
                             data-testid="free-shipping"
                           >
                             Frete gratis
                           </i>
+                        )
                       }
                     </div>
                     <img className="card-img-top" src={ e.thumbnail } alt={ e.title } />
