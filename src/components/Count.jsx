@@ -6,7 +6,9 @@ export default class Count extends Component {
     const { itensCartQT } = this.props;
 
     return (
-      <span data-testid="shopping-cart-size">{ itensCartQT }</span>
+      <div className="background-quantity">
+        <span data-testid="shopping-cart-size">{ itensCartQT }</span>
+      </div>
     );
   }
 }

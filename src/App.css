@@ -45,3 +45,25 @@
 .card-body-heigth {
   height: 100px;
 }
+
+.background-quantity {
+  background-color: red;
+  border-radius: 50%;
+}
+
+.btn-size {
+  width: 50px;
+}
+
+.search-bar {
+  margin: auto;
+}
+
+.btn-size-frete {
+  background-color: rgb(72, 255, 0);
+  border-radius: 20px;
+  font-size: large;
+  margin-left: 2px;
+  text-align: center;
+  width: 150px;
+}
