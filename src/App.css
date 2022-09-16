@@ -60,10 +60,10 @@
 }
 
 .btn-size-frete {
-  width: 150px;
   background-color: rgb(72, 255, 0);
   border-radius: 20px;
   font-size: large;
-  text-align: center;
   margin-left: 2px;
+  text-align: center;
+  width: 150px;
 }
